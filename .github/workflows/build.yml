@@ -1,0 +1,36 @@
+name: Build Windows EXE
+
+on:
+  # Runs when you push to main branch
+  push:
+    branches: [main]
+  # Also lets you trigger manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests pyinstaller
+
+      - name: Build EXE
+        run: |
+          pyinstaller --onefile --noconsole --name "EVE Solo Lookup" eve_solo_lookup.py
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: EVE-Solo-Lookup
+          path: dist/EVE Solo Lookup.exe
