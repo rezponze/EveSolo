@@ -27,7 +27,7 @@ jobs:
 
       - name: Build EXE
         run: |
-          pyinstaller --onefile --noconsole --name "EVE Solo Lookup" eve_solo_lookup.py
+          pyinstaller --onefile --noconsole --name "EVE Solo" Eve_Solo.py
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
