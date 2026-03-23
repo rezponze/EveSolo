@@ -33,4 +33,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: EVE-Solo-Lookup
-          path: dist/EVE Solo Lookup.exe
+          path: dist/EVE Solo.exe
